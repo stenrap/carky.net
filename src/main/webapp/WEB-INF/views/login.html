@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {{#error}}
+    burp
+    {{/error}}
+    <form method="POST">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username"/>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password"/>
+        {{#csrfToken}}
+        <input type="hidden" name="{{parameterName}}" value="{{token}}"/>
+        {{/csrfToken}}
+        <button type="submit" class="btn">Log in</button>
+    </form>
+</body>
+</html>
