@@ -14,9 +14,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        // WYLO .... Set up your DataSource via Tomcat and JNDI, like you did in tyedart.com
-        //           Then set up Hibernate the way you did in usana
-        //           Then change this to authenticate via jdbcAuthentication (with a Bcrypt password encoder) like you did in tyedart.com
+        // WYLO .... Set up Hibernate the way you did in usana (of course using DBCP instead of C3P0)
+        //           Then set up the appropriate tables and change this to authenticate via jdbcAuthentication (with a Bcrypt password encoder) like you did in tyedart.com
         auth.inMemoryAuthentication().withUser("rob").password("password").roles("USER");
     }
 
