@@ -23,7 +23,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        // WYLO .... Set up Hibernate the way you did in usana (of course using DBCP instead of C3P0)
         auth
             .jdbcAuthentication()
                 .dataSource(dataSource)

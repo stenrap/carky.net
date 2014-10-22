@@ -1,0 +1,28 @@
+
+============
+    TODO
+============
+
+    - Come up with a visual design for the login page (register/login split?)
+    - Learn Bootstrap, then get it in place and create the login page
+    - Set up Hibernate the way you did in usana (of course using DBCP instead of C3P0)
+    - Get the registration working
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
