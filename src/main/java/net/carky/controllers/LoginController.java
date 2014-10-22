@@ -1,10 +1,11 @@
 package net.carky.controllers;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,15 @@ public class LoginController {
         model.addAttribute("parameterName", csrfToken.getParameterName());
         model.addAttribute("token", csrfToken.getToken());
         return new ModelAndView("login", "csrfToken", model);
+    }
+
+    @RequestMapping(value = "bcrypt", method = RequestMethod.GET)
+    @ResponseBody
+    public String getBcrypt(@RequestParam String rawPassword) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encodedPassword = encoder.encode(rawPassword);
+        String result = "The encoded password is: "+encodedPassword+" which matches 'password': "+encoder.matches("password", encodedPassword);
+        return result;
     }
 
 }

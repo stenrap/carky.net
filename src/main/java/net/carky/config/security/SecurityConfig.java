@@ -7,16 +7,27 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebMvcSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    private DataSource dataSource;
+
+    @Autowired
+    public PasswordEncoder passwordEncoder;
+
+    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         // WYLO .... Set up Hibernate the way you did in usana (of course using DBCP instead of C3P0)
-        //           Then set up the appropriate tables and change this to authenticate via jdbcAuthentication (with a Bcrypt password encoder) like you did in tyedart.com
-        auth.inMemoryAuthentication().withUser("rob").password("password").roles("USER");
+        auth
+            .jdbcAuthentication()
+                .dataSource(dataSource)
+                .passwordEncoder(passwordEncoder);
     }
 
     @Override
