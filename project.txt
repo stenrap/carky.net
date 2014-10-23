@@ -3,8 +3,9 @@
     TODO
 ============
 
-    - Come up with a visual design for the login page (register/login split?)
-    - Learn Bootstrap, then get it in place and create the login page
+    - Learn Bootstrap
+    - Start over on the login page with the Bootstrap basic HTML template (http://getbootstrap.com/getting-started/#template)
+    - Now come up with a visual design for the login page (register/login split?)
     - Set up Hibernate the way you did in usana (of course using DBCP instead of C3P0)
     - Get the registration working
 
