@@ -20,17 +20,22 @@
     background-size: cover;
 }
 
+#login-title-container {
+    text-align: center;
+}
+
 #login-title {
     background: url('../images/title-card.png') no-repeat left center;
     display: inline-block;
     height: 137px;
-    text-align: center;
+    margin-top: 30px;
 }
 
 #login-title span {
     color: #f6c92e;
-    font-family: 'lindsay';
+    font-family: lindsay;
     font-size: 11.5625em;
     line-height: 0.9;
+    padding-left: 25px;
     text-shadow: black -5px 5px 2px;
 }
