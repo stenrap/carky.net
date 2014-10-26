@@ -42,7 +42,6 @@
 
 #login-form-outer {
     background-color: rgba(255,255,255,0.375);
-    /*box-shadow: 0 0 20px #ffffff;*/
     border-radius: 8px;
     height: 390px;
     margin: 30px auto;
@@ -51,7 +50,7 @@
 }
 
 #login-form-container {
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.625);
     border-radius: 4px;
     height: 380px;
     margin: 0 auto;
@@ -86,6 +85,26 @@
 
 #login-form input:-ms-input-placeholder {
     color: rgba(255,255,255,0.625) !important;
+}
+
+#login-form input[type=checkbox] {
+    cursor: pointer;
+}
+
+#login-form .checkbox {
+    display: inline-block;
+    margin-top: 0;
+}
+
+#login-form .checkbox label {
+    color: #fff;
+}
+
+#login-help {
+    border: none;
+    color: #fff;
+    float: right;
+    padding: 0;
 }
 
 
