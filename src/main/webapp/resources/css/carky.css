@@ -93,6 +93,7 @@
 
 #login-form .checkbox {
     display: inline-block;
+    margin-bottom: 15px;
     margin-top: 0;
 }
 
@@ -105,6 +106,16 @@
     color: #fff;
     float: right;
     padding: 0;
+    text-decoration: none;
+}
+
+#login-submit-container {
+    text-align: center;
+}
+
+#login-submit-container button {
+    background-color: rgba(0,0,0,0);
+    color: #fff;
 }
 
 
