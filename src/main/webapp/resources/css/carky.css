@@ -39,3 +39,70 @@
     padding-left: 25px;
     text-shadow: black -5px 5px 2px;
 }
+
+#login-form-outer {
+    background-color: rgba(255,255,255,0.375);
+    /*box-shadow: 0 0 20px #ffffff;*/
+    border-radius: 8px;
+    height: 390px;
+    margin: 30px auto;
+    padding-top: 5px;
+    width: 610px;
+}
+
+#login-form-container {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 4px;
+    height: 380px;
+    margin: 0 auto;
+    width: 600px;
+}
+
+#login-form {
+    /*background-color: #990000;*/
+    height: 100%;
+    padding: 0 30px;
+    width: 360px;
+}
+
+#login-form input[type=text],
+#login-form input[type=password] {
+    background-color:rgba(0,0,0,0) !important;
+    color: #fff;
+}
+
+#login-form input::-webkit-input-placeholder {
+    color: rgba(255,255,255,0.625) !important;
+}
+
+#login-form input:-moz-placeholder {
+    color: rgba(255,255,255,0.625) !important;
+}
+
+
+#login-form input::-moz-placeholder {
+    color: rgba(255,255,255,0.625) !important;
+}
+
+#login-form input:-ms-input-placeholder {
+    color: rgba(255,255,255,0.625) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
