@@ -50,17 +50,17 @@
         </div>
         <div id="login-form-container">
             <div id="login-form">
-                <form role="form">
+                <form role="form" method="POST">
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                            <input type="text" class="form-control" id="loginUsername" placeholder="Username" autofocus>
+                            <input type="text" class="form-control" id="loginUsername" name="username" placeholder="Username" autofocus>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                            <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                            <input type="password" class="form-control" id="loginPassword" name="password" placeholder="Password">
                         </div>
                     </div>
                     <!-- Squared FOUR -->
@@ -70,13 +70,6 @@
                             <label for="squaredFour"><span>Remember Me</span></label>
                         </div>
                     </div>
-                    <!--
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" id="remember-me" checked> Remember Me
-                        </label>
-                    </div>
-                    -->
                     <button type="button" id="login-help" class="btn btn-link">
                         <span class="glyphicon glyphicon-question-sign"></span> Help
                     </button>
@@ -85,7 +78,15 @@
                             <button type="submit" class="btn btn-default">Sign In</button>
                         </div>
                     </div>
+                    {{#csrfToken}}
+                    <input type="hidden" name="{{parameterName}}" value="{{token}}"/>
+                    {{/csrfToken}}
                 </form>
+                {{#csrfToken}}
+                {{#error}}
+                <span>Wrong credentials, buddy.</span> <!-- WYLO .... Figure out where to place this and what it should say... -->
+                {{/error}}
+                {{/csrfToken}}
             </div>
             <div id="join-container">
                 <button type="button" id="create-account-button" class="btn btn-default btn-lg">Create Account</button>

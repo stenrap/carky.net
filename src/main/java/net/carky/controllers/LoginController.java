@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,6 +23,13 @@ public class LoginController {
         return new ModelAndView("login", "csrfToken", model);
     }
 
+    @RequestMapping(value = "error", method = RequestMethod.GET)
+    public String loginError(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("error", true);
+        return "redirect:/login";
+    }
+
+    /*
     @RequestMapping(value = "bcrypt", method = RequestMethod.GET)
     @ResponseBody
     public String getBcrypt(@RequestParam String rawPassword) {
@@ -30,5 +38,6 @@ public class LoginController {
         String result = "The encoded password is: "+encodedPassword+" which matches 'password': "+encoder.matches("password", encodedPassword);
         return result;
     }
+    */
 
 }
