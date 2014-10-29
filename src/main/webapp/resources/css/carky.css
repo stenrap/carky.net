@@ -54,6 +54,7 @@
     display: inline-block;
     height: 100%;
     padding: 30px;
+    position: relative;
     width: 316px;
 }
 
@@ -206,6 +207,13 @@
 
 #create-account-button {
     margin-top: 63px;
+}
+
+#login-error {
+    color: #fff;
+    display: block;
+    margin-top: 18px;
+    text-align: center;
 }
 
 

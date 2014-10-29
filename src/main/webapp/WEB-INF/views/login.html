@@ -84,12 +84,12 @@
                 </form>
                 {{#csrfToken}}
                 {{#error}}
-                <span>Wrong credentials, buddy.</span> <!-- WYLO .... Figure out where to place this and what it should say... -->
+                <span id="login-error">Invalid username or password.</span>
                 {{/error}}
                 {{/csrfToken}}
             </div>
             <div id="join-container">
-                <button type="button" id="create-account-button" class="btn btn-default btn-lg">Create Account</button>
+                <button type="button" id="create-account-button" class="btn btn-default btn-lg">Create Account</button> <!-- WYLO .... Get this working (time for some Backbone)! -->
             </div>
         </div>
     </div>
