@@ -3,9 +3,12 @@
     TODO
 ============
 
-    - Come up with a visual design for the login page (register/login split?) and make sure to use Bootstrap components where possible
+    - Implement your design for the 'Create Account' form (and use some Greensock to transition to it)...
+    - Get account creation fully working (with a 'token' column in the users table, and an email)
+    - Come up with a design for the 'Help' form on the login page
+    - Add jQuery validation to all the login forms
+    - Get the 'Remember Me' functionality working
     - Set up Hibernate the way you did in usana (of course using DBCP instead of C3P0)
-    - Get the registration fully working
 
 
 
