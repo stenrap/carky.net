@@ -54,13 +54,13 @@
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                            <input type="text" class="form-control" id="loginUsername" name="username" placeholder="Username" autofocus>
+                            <input type="text" class="form-control login-input" id="loginUsername" name="username" placeholder="Username" autofocus>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                            <input type="password" class="form-control" id="loginPassword" name="password" placeholder="Password">
+                            <input type="password" class="form-control login-input" id="loginPassword" name="password" placeholder="Password">
                         </div>
                     </div>
                     <!-- Squared FOUR -->
@@ -91,6 +91,40 @@
             <div id="join-container">
                 <button type="button" id="create-account-button" class="btn btn-default btn-lg">Create Account</button> <!-- WYLO .... Get this working (time for some Backbone)! -->
             </div>
+        </div>
+        <div id="create-account-container">
+            <form role="form" method="POST" action="/register">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                        <input type="text" class="form-control login-input" id="accountUsername" name="username" placeholder="Username" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                        <input type="password" class="form-control login-input" id="accountPassword" name="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                        <input type="password" class="form-control login-input" id="confirmAccountPassword" name="confirmPassword" placeholder="Confirm Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                        <input type="email" class="form-control login-input" id="accountEmail" name="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                        <input type="email" class="form-control login-input" id="confirmAccountEmail" name="confirmEmail" placeholder="Confirm Email">
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <script src="resources/js/jquery.min.js"></script>

@@ -9,6 +9,7 @@
     - Add jQuery validation to all the login forms
     - Get the 'Remember Me' functionality working
     - Set up Hibernate the way you did in usana (of course using DBCP instead of C3P0)
+    - Handle 403s
 
 
 

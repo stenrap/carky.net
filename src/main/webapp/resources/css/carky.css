@@ -40,13 +40,17 @@
     text-shadow: black -5px 5px 2px;
 }
 
-#login-form-container {
+#login-form-container, #create-account-container {
     background-color: rgba(0,0,0,0.8125);
     border: 1px solid #fff;
     border-radius: 5px;
     margin: 30px auto;
     padding: 30px 0;
     width: 550px;
+}
+
+#create-account-container {
+    padding: 30px;
 }
 
 #login-form {
@@ -68,26 +72,25 @@
     width: 232px;
 }
 
-#login-form input[type=text],
-#login-form input[type=password] {
+.login-input {
     background-color:rgba(0,0,0,0) !important;
     color: #fff;
 }
 
-#login-form input::-webkit-input-placeholder {
+.login-input::-webkit-input-placeholder {
     color: rgba(255,255,255,0.375) !important;
 }
 
-#login-form input:-moz-placeholder {
+.login-input:-moz-placeholder {
     color: rgba(255,255,255,0.375) !important;
 }
 
 
-#login-form input::-moz-placeholder {
+.login-input::-moz-placeholder {
     color: rgba(255,255,255,0.375) !important;
 }
 
-#login-form input:-ms-input-placeholder {
+.login-input:-ms-input-placeholder {
     color: rgba(255,255,255,0.375) !important;
 }
 
@@ -184,14 +187,6 @@
     -ms-transform: rotate(-45deg);
     transform: rotate(-45deg);
 }
-
-/*
-.squaredFour label:hover::after {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
-    filter: alpha(opacity=30);
-    opacity: 0.375;
-}
-*/
 
 .squaredFour input[type=checkbox]:checked + label:after {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
