@@ -1,27 +1,3 @@
-<!--
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-    {{#error}}
-    burp
-    {{/error}}
-    <form method="POST">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username"/>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password"/>
-        {{#csrfToken}}
-        <input type="hidden" name="{{parameterName}}" value="{{token}}"/>
-        {{/csrfToken}}
-        <button type="submit" class="btn">Log in</button>
-    </form>
-</body>
-</html>
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,15 +65,40 @@
                 {{/csrfToken}}
             </div>
             <div id="join-container">
-                <button type="button" id="create-account-button" class="btn btn-default btn-lg">Create Account</button> <!-- WYLO .... Get this working (time for some Backbone)! -->
+                <button type="button" id="create-account-button" class="btn btn-default btn-lg">Create Account</button> <!-- WYLO .... Get this working (time for some Hibernate)! -->
             </div>
         </div>
         <div id="create-account-container">
             <form role="form" method="POST" action="/register">
-                <div class="form-group">
+                <!--
+                    When the username field is empty after a change:
+                        - remove the "has-error"        class from #account-username-div
+                        - remove the "has-success"      class from #account-username-div
+                        - remove the "has-feedback"     class from #account-username-div
+                        - add    the "hidden"           class to   #account-username-feedback-span
+
+                    When the username is available:
+                        - remove the "has-error"        class from #account-username-div
+                        - add    the "has-success"      class to   #account-username-div
+                        - add    the "has-feedback"     class to   #account-username-div
+                        - remove the "glyphicon-remove" class from #account-username-feedback-span
+                        - add    the "glyphicon-ok"     class to   #account-username-feedback-span
+                        - remove the "hidden"           class from #account-username-feedback-span
+
+                    When the username is not available:
+                        - remove the "has-success"      class from #account-username-div
+                        - add    the "has-error"        class to   #account-username-div
+                        - add    the "has-feedback"     class to   #account-username-div
+                        - remove the "glyphicon-ok"     class from #account-username-feedback-span
+                        - add    the "glyphicon-remove" class to   #account-username-feedback-span
+                        - remove the "hidden"           class from #account-username-feedback-span
+                -->
+                <div id="account-username-div" class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                        <label class="control-label sr-only" for="accountUsername">Account Username</label>
                         <input type="text" class="form-control login-input" id="accountUsername" name="username" placeholder="Username" autofocus>
+                        <span id="account-username-feedback-span" class="glyphicon glyphicon-ok hidden form-control-feedback"></span>
                     </div>
                 </div>
                 <div class="form-group">
