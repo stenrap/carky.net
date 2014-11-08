@@ -50,7 +50,9 @@
 }
 
 #create-account-container {
+    display: none;
     padding: 30px;
+    width: 320px;
 }
 
 #login-form {
@@ -124,16 +126,16 @@
     text-decoration: none;
 }
 
-#login-submit-container {
+#login-submit-container, #register-submit-container {
     text-align: center;
 }
 
-#login-submit-container button, #join-container button {
+#login-submit-container button, #join-container button, #register-submit-container button {
     background-color: rgba(0,0,0,0);
     color: #fff;
 }
 
-#login-submit-container .form-group {
+#login-submit-container .form-group, #register-submit-container .form-group {
     margin-bottom: 0;
 }
 
@@ -213,7 +215,9 @@
     text-align: center;
 }
 
-
+#register-submit-container {
+    padding-top: 15px;
+}
 
 
 

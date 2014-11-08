@@ -10,6 +10,7 @@ $(function() {
         },
 
         onCreateAccountClick : function() {
+            this.$el.hide();
             this.eventAggregator.trigger('create-account');
         }
 
@@ -18,10 +19,11 @@ $(function() {
     CARKY.RegisterView = Backbone.View.extend({
 
         initialize : function() {
-            this.eventAggregator.on('create-account', this.onCreateAccountClicked);
+            this.eventAggregator.on('create-account', this.onCreateAccountClicked, this);
         },
 
         onCreateAccountClicked : function() {
+            this.$el.fadeIn(375);
             console.log("Fancy a registration in this view, eh?");
         }
 
