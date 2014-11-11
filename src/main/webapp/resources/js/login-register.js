@@ -6,17 +6,30 @@ $(function() {
     CARKY.LoginView = Backbone.View.extend({
 
         events : {
-            "click #create-account-button" : "onCreateAccountClick"
+            "click #create-account-button" : "onCreateAccountClicked"
         },
 
-        onCreateAccountClick : function() {
+        initialize : function() {
+            this.eventAggregator.on('back-to-login', this.onBackClicked, this);
+        },
+
+        onCreateAccountClicked : function() {
             this.$el.hide();
             this.eventAggregator.trigger('create-account');
+        },
+
+        onBackClicked : function() {
+            this.$el.fadeIn(375);
+            $("#loginUsername").focus();
         }
 
     });
 
     CARKY.RegisterView = Backbone.View.extend({
+
+        events : {
+            "click #register-back" : "onBackClicked"
+        },
 
         initialize : function() {
             this.eventAggregator.on('create-account', this.onCreateAccountClicked, this);
@@ -24,7 +37,12 @@ $(function() {
 
         onCreateAccountClicked : function() {
             this.$el.fadeIn(375);
-            console.log("Fancy a registration in this view, eh?");
+            $("#accountUsername").focus();
+        },
+
+        onBackClicked : function() {
+            this.$el.hide();
+            this.eventAggregator.trigger('back-to-login');
         }
 
     });

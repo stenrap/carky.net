@@ -118,12 +118,18 @@
     color: #fff;
 }
 
-#login-help {
+#login-help, #register-back {
     border: none;
     color: #fff;
     float: right;
     padding: 0;
     text-decoration: none;
+}
+
+#register-back {
+    left: 0;
+    position: absolute;
+    top: 21px;
 }
 
 #login-submit-container, #register-submit-container {
@@ -217,6 +223,7 @@
 
 #register-submit-container {
     padding-top: 15px;
+    position: relative;
 }
 
 
