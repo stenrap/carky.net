@@ -3,6 +3,8 @@ var CARKY = CARKY || {};
 Backbone.View.prototype.eventAggregator = Backbone.View.prototype.eventAggregator || _.extend({}, Backbone.Events);
 $(function() {
 
+    var checkingUsername = false;
+
     CARKY.LoginView = Backbone.View.extend({
 
         events : {
@@ -28,7 +30,8 @@ $(function() {
     CARKY.RegisterView = Backbone.View.extend({
 
         events : {
-            "click #register-back" : "onBackClicked"
+            "click #register-back" : "onBackClicked",
+            "keyup #accountUsername" : "checkUserName"
         },
 
         initialize : function() {
@@ -43,6 +46,18 @@ $(function() {
         onBackClicked : function() {
             this.$el.hide();
             this.eventAggregator.trigger('back-to-login');
+        },
+
+        checkUserName : function(event) {
+            if (!checkingUsername) {
+                checkingUsername = true;
+                window.setTimeout(function() {
+                    var username = $(event.target).val();
+                    // WYLO .... What if the username is empty or hasn't changed after the last key up (e.g. the user pressed the shift key)?
+                    console.log("Checking username: "+username);
+                    checkingUsername = false;
+                }, 750);
+            }
         }
 
     });
