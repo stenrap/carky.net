@@ -3,7 +3,8 @@ var CARKY = CARKY || {};
 Backbone.View.prototype.eventAggregator = Backbone.View.prototype.eventAggregator || _.extend({}, Backbone.Events);
 $(function() {
 
-    var checkingUsername = false;
+    var timeOutId;
+    var username = "";
 
     CARKY.LoginView = Backbone.View.extend({
 
@@ -49,15 +50,16 @@ $(function() {
         },
 
         checkUserName : function(event) {
-            if (!checkingUsername) {
-                checkingUsername = true;
-                window.setTimeout(function() {
-                    var username = $(event.target).val();
-                    // WYLO .... What if the username is empty or hasn't changed after the last key up (e.g. the user pressed the shift key)?
-                    console.log("Checking username: "+username);
-                    checkingUsername = false;
-                }, 750);
+            if (timeOutId) {
+                window.clearTimeout(timeOutId);
             }
+            timeOutId = window.setTimeout(function() {
+                if (username.toLowerCase() !== $(event.target).val().toLowerCase() && $(event.target).val().length > 0) {
+                    username = $(event.target).val().substring(0, 50);
+                    // WYLO .... You're finally ready to see if Hibernate is working. Send this via $.ajax ...
+                    console.log("Checking username: "+username);
+                }
+            }, 750);
         }
 
     });
