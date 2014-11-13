@@ -58,6 +58,12 @@ $(function() {
                     username = $(event.target).val().substring(0, 50);
                     // WYLO .... You're finally ready to see if Hibernate is working. Send this via $.ajax ...
                     console.log("Checking username: "+username);
+                    var csrf = $("input[name=_csrf]").val();
+                    $.ajax({
+                        data : {"name" : username, "_csrf" : csrf},
+                        type : "POST",
+                        url  : "/register/check-name"
+                    });
                 }
             }, 750);
         }
