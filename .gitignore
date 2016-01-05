@@ -1,6 +1,4 @@
 .DS_Store
 .idea
 *.iml
-target
-context.xml
-hibernate.properties
+node_modules
