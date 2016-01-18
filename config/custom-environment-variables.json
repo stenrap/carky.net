@@ -1,0 +1,15 @@
+{
+  "config": {
+    "db": {
+      "name": "CARKY_DB_NAME",
+      "username": "CARKY_DB_USERNAME",
+      "password": "CARKY_DB_PASSWORD"
+    },
+    "email": {
+      "noreply": {
+        "user": "CARKY_NO_REPLY_USER",
+        "password": "CARKY_NO_REPLY_PASSWORD"
+      }
+    }
+  }
+}

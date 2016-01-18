@@ -1,0 +1,8 @@
+{
+  "config": {
+    "db": {
+      "hostname": "localhost",
+      "database": "carky"
+    }
+  }
+}

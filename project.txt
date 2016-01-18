@@ -1,1 +1,88 @@
-Note that you have PostgreSQL 9.4.5 running via the Postgres.app (in Applications)
+
+================
+    Database
+================
+
+Note that you have PostgreSQL 9.4.5 running via the Postgres.app (in Applications).
+
+    - Here's the command to create the [CARKY_DB_NAME] database:
+    
+        createdb [CARKY_DB_NAME]
+    
+    - Here's how you connected to this database as a superuser via pgAdmin3:
+    
+        + Add a server with the following properties:
+        
+            Name: [any friendly name of your choosing]
+            Host: localhost
+            Username: [your Mac OS X username]
+            Password: [your Mac OS X password]
+    
+    - With the connection established, here's how you can create a table:
+    
+        > [connection name]
+        
+            > [database name]
+            
+                > Schemas
+                
+                    > public
+                    
+                        Tables // right-click, then click 'New Table'
+    
+    - Once you have a table created, you can create indexes as follows:
+    
+        > [connection name]
+                
+            > [database name]
+            
+                > Schemas
+                
+                    > public
+                    
+                        > Tables
+                        
+                            > [table name]
+                            
+                                Indexes // right-click, then click 'New Index'
+    
+    - For the various commands used to create the carky.net tables, refer to pgAdmin3
+    
+        
+    
+    - Here's the command to create the [CARKY_DB_USERNAME] user:
+    
+        CREATE USER [CARKY_DB_USERNAME] WITH PASSWORD [CARKY_DB_PASSWORD]
+    
+    - To login from a command prompt:
+    
+        psql -d [CARKY_DB_NAME] -U [CARKY_DB_USERNAME]
+    
+    - TODO and WYLO .... Here's the command to grant permissions to [CARKY_DB_USERNAME] on the ? table:
+    
+        GRANT SELECT, INSERT, UPDATE, DELETE,  ON ? TO [CARKY_DB_USERNAME]
+    
+    - The 'users' table looks like this:
+    
+        +------+---------+------------+--------+--------+
+        |  id  |  email  |  password  |  code  |  name  |
+        +------+---------+------------+--------+--------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
