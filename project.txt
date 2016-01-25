@@ -1,4 +1,17 @@
 
+=================
+    Learnings
+=================
+
+    - To do a debug build of webpack (why can't you remember this?):
+    
+        webpack -d --watch --progress --color
+    
+    - When you're ready to start on the peer-to-peer connections (via WebRTC), check this out:
+    
+        https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API
+    
+
 ================
     Database
 ================
@@ -65,8 +78,98 @@ Note that you have PostgreSQL 9.4.5 running via the Postgres.app (in Application
     - The 'users' table looks like this:
     
         +------+---------+------------+--------+--------+
-        |  id  |  email  |  password  |  code  |  name  |
+        |  id  |  email  |  password  |  name  |  code  |
         +------+---------+------------+--------+--------+
+
+
+============
+    Flow
+============
+
+NOTE: In order to be a single-page app yet support "real" URLs, when any of the below URLs is requested directly, it must return the same HTML with
+      the same entry-point JavaScript (carky.bundle.min.js) -- which then invokes the Backbone router to do the right thing.
+
+    /  =>
+    
+        if (the user is logged in) {
+            redirect to /games
+        } else {
+            render the beautiful sign-in/register page you created when you were going to do carky in Java/Spring
+        }
+    
+    
+    /register  =>
+    
+        provide a form that allows the user to register
+    
+    
+    /forgot  =>
+        
+        provide a form that allows users to request a password reset email
+    
+    
+    /reset/:email/:code  =>
+    
+        if (the user associated with :email has a valid :code) {
+            render a form that allows for password reset
+        } else {
+            redirect to /
+        }
+    
+    
+    /games  =>
+    
+        if (the user is not logged in) {
+            redirect to /
+        } else {
+            list the user's games in progress, and provide a 'New Game' button
+        }
+    
+    
+    /game/:id  =>
+        
+            if (the user is logged in) {
+                if (the user is a player in game :id) {
+                    render the game
+                } else {
+                    redirect to /games
+                }
+            } else {
+                redirect to /
+            }
+    
+    
+    /profile  =>
+    
+        if (the user is not logged in) {
+            redirect to /
+        } else {
+            show a form that allows the user to change his email, password, and name
+            // TODO .... Should the site have a notion of "friends" and allow you to request friendships on this page?
+            //
+            //           Seems like you could enforce uniqueness on a "friends" table with help from these pages:
+            //
+            //               http://stackoverflow.com/questions/30036837/postgresql-enforce-unique-two-way-combination-of-columns
+            //
+            //               http://www.postgresql.org/docs/9.1/static/indexes-expressional.html
+        }
+    
+    
+============
+    APIs
+============
+
+    /user/register  =>
+    
+        use the register model and db service to register a user, returning one of the following:
+        
+            {error: 'That email address has already been registered.'}
+            {success: true}
+        
+    
+    /user/login  =>
+    
+        use passport and the db service to determine whether the email and password are 
 
 
 

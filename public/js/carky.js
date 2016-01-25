@@ -3,14 +3,16 @@ var Backbone = require('backbone');
 var CarkyRouter = Backbone.Router.extend({
     
     routes: {
-        '': 'login'
+        '': 'login',
+        'register': 'register'
     },
     
     login: function() {
-        require.ensure(['test'],  function(require) {
-            var test = require('test');
-            test.doTest();
-        })
+        
+    },
+    
+    register: function() {
+        // TODO and WYLO 4 .... Render this bad boy (should have a lot in common with the login view)
     }
     
 });

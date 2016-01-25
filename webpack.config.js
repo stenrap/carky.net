@@ -40,7 +40,10 @@ module.exports = {
         extensions: ['', '.js'],
         root: [
             path.join(__dirname, 'node_modules'),
-            __dirname + '/public/js/'
+            __dirname + '/public/js',
+            __dirname + '/public/js/models',
+            __dirname + '/public/js/views',
+            __dirname + '/public/js/controllers'
         ]
     },
     resolveLoader: {
