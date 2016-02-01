@@ -1,7 +1,6 @@
 {
   "config": {
     "db": {
-      "name": "CARKY_DB_NAME",
       "username": "CARKY_DB_USERNAME",
       "password": "CARKY_DB_PASSWORD"
     },

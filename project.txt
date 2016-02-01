@@ -71,15 +71,17 @@ Note that you have PostgreSQL 9.4.5 running via the Postgres.app (in Application
     
         psql -d [CARKY_DB_NAME] -U [CARKY_DB_USERNAME]
     
-    - TODO and WYLO .... Here's the command to grant permissions to [CARKY_DB_USERNAME] on the ? table:
+    - Here are the commands to grant appropriate permissions to [CARKY_DB_USERNAME]:
     
-        GRANT SELECT, INSERT, UPDATE, DELETE,  ON ? TO [CARKY_DB_USERNAME]
+        GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO [CARKY_DB_USERNAME];
+        
+        GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO [CARKY_DB_USERNAME];
     
     - The 'users' table looks like this:
     
-        +------+---------+------------+--------+--------+
-        |  id  |  email  |  password  |  name  |  code  |
-        +------+---------+------------+--------+--------+
+        +------+---------+------------+--------+----------------+
+        |  id  |  email  |  password  |  code  |  display_name  |
+        +------+---------+------------+--------+----------------+
 
 
 ============
@@ -101,6 +103,19 @@ NOTE: In order to be a single-page app yet support "real" URLs, when any of the 
     /register  =>
     
         provide a form that allows the user to register
+        
+        TODO and WYLO 1 .... See below.
+        
+        if (the user exists) {
+            if (the user has a non-NULL code) {
+                email a new code; // it's possible someone tried to register using their email address
+            } else {
+                ask if they want to reset their password // the code was set to NULL when they previously registered and verified their account
+            }
+        } else {
+            insert the user;
+            email a new code;
+        }
     
     
     /forgot  =>

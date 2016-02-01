@@ -1,10 +1,18 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express'),
+    router = express.Router(),
+    model = require('../public/js/models/register-model');
 
 router.post('/register', function(req, res, next) {
-
-    // TODO and WYLO 1 .... Use the register-model to validate the registration, then use the db service to stick the user
-    //                      in the database, then use the email service (after you create it) to send a 'welcome' email.
+    model.setEmail(req.body.email);
+    model.setName(req.body.name);
+    model.setPassword1(req.body.password1);
+    model.setPassword2(req.body.password2);
+    var result = model.validate();
+    if (result.error) {
+        return res.send({error: result.error});
+    }
+    
+    // TODO and WYLO 1 .... See TODO and WYLO 1 for the /register flow in the project.text file.
 
     res.send({success: true});
 });

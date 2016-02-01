@@ -11,6 +11,44 @@ module.exports = {
         return this;
     },
     
+    getUserByEmail: function(email, callback) {
+        pg.connect(this.connectionString, function(err, client, done) {
+            if (err) {
+                callback('Error getting client connection: ' + err);
+            } else {
+                client.query({
+                    name: 'get_user_by_email_query',
+                    text: 'SELECT * FROM get_user_by_email($1)',
+                    values: [email]
+                },
+                function (err, rawResult) {
+                    if (err) {
+                        callback('Error performing get_user_by_email() query: ' + err);
+                    } else {
+                        var result = {
+                            id: null,
+                            password: null,
+                            display_name: null,
+                            code: null
+                        };
+                        if (rawResult && rawResult.rows && rawResult.rows[0]) {
+                            result.id = rawResult.rows[0].id;
+                            result.password = rawResult.rows[0].password;
+                            result.display_name = rawResult.rows[0].display_name;
+                            result.code = rawResult.rows[0].code;
+                        }
+                        callback(null, result);
+                    }
+                    done();
+                });
+            }
+        });
+    },
+    
+    registerUser: function(email, name, password, callback) {
+        
+    },
+    
     end: function() {
         pg.end();
     }
