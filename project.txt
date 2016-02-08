@@ -103,19 +103,6 @@ NOTE: In order to be a single-page app yet support "real" URLs, when any of the 
     /register  =>
     
         provide a form that allows the user to register
-        
-        TODO and WYLO 1 .... See below.
-        
-        if (the user exists) {
-            if (the user has a non-NULL code) {
-                email a new code; // it's possible someone tried to register using their email address
-            } else {
-                ask if they want to reset their password // the code was set to NULL when they previously registered and verified their account
-            }
-        } else {
-            insert the user;
-            email a new code;
-        }
     
     
     /forgot  =>
@@ -176,10 +163,28 @@ NOTE: In order to be a single-page app yet support "real" URLs, when any of the 
 
     /user/register  =>
     
-        use the register model and db service to register a user, returning one of the following:
+        use the register model and db service to register a user
         
-            {error: 'That email address has already been registered.'}
-            {success: true}
+        TODO and WYLO 1 .... See below.
+        
+        if (the user exists) {
+            if (the user has a non-NULL code) {
+                create a new code;
+                update the code in the db;
+                email the new code; // it's possible someone tried to register using their email address
+            } else {
+                ask if they want to reset their password // the code was set to NULL when they previously registered and verified their account
+            }
+        } else {
+            create a new code;
+            insert the user into the db;
+            email the new code;
+        }
+    
+    
+    /user/verify/:code  =>
+    
+        verify a newly registered account (and since the user came directly here from a link, redirect on success/failure)
         
     
     /user/login  =>

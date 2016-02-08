@@ -5,6 +5,10 @@ var RegisterModel = Backbone.Model.extend({
     setEmail: function(email) {
         this.set('email', email);
     },
+    
+    getEmail: function() {
+        return this.get('email');
+    },
 
     setName: function(name) {
         this.set('name', name);

@@ -7,7 +7,7 @@ var dbConfig = require('config').get('config.db');
 var pg       = require('pg').native;
 var expect   = require('chai').expect;
 
-describe('The db service', function() {
+describe.skip('The db service', function() {
     
     before(function() {
         this.timeout(0);
@@ -28,6 +28,36 @@ describe('The db service', function() {
                     }
                     done();
                     doneCallback();
+                });
+            });
+        };
+        this.getUser = function(callback) {
+            pg.connect(this.dbService.connectionString, function(err, client, done) {
+                if (err) {
+                    console.error('Error connecting to database:', err);
+                    return;
+                }
+                client.query("SELECT * FROM users WHERE email = 'foo@bar.com'", function(err, rawResult) {
+                    if (err) {
+                        console.error('Error getting test user:', err);
+                        return;
+                    }
+                    var result = {
+                        id: null,
+                        email: null,
+                        password: null,
+                        code: null,
+                        display_name: null
+                    };
+                    if (rawResult && rawResult.rows && rawResult.rows[0]) {
+                        result.id = rawResult.rows[0].id;
+                        result.email = rawResult.rows[0].email;
+                        result.password = rawResult.rows[0].password;
+                        result.code = rawResult.rows[0].code;
+                        result.display_name = rawResult.rows[0].display_name;
+                    }
+                    callback(result);
+                    done();
                 });
             });
         };
@@ -67,6 +97,31 @@ describe('The db service', function() {
             });
         });
         
+        after(function(afterDone) {
+            this.deleteUser(afterDone);
+        });
+        
+    });
+    
+    describe('updateUserCode()', function() {
+
+        before(function(beforeDone) {
+            this.insertUser(beforeDone);
+        });
+        
+        it('should update a user\'s code', function(itDone) {
+            var test = this;
+            this.dbService.updateUserCode('21111111-2222-3333-4444-555555555555', 'foo@bar.com', function(err) {
+                if (err) {
+                    console.error(err);
+                }
+                test.getUser(function(result) {
+                    expect(result.code).to.equal('21111111-2222-3333-4444-555555555555');
+                    itDone();
+                });
+            });
+        });
+
         after(function(afterDone) {
             this.deleteUser(afterDone);
         });

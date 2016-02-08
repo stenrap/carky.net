@@ -45,6 +45,28 @@ module.exports = {
         });
     },
     
+    updateUserCode: function(code, email, callback) {
+        pg.connect(this.connectionString, function(err, client, done) {
+            if (err) {
+                callback('Error getting client connection: ' + err);
+            } else {
+                client.query({
+                    name: 'update_user_code_query',
+                    text: 'SELECT update_user_code($1, $2)',
+                    values: [code, email]
+                },
+                function (err) {
+                    if (err) {
+                        callback('Error performing update_user_code() query: ' + err);
+                    } else {
+                        callback(null);
+                    }
+                    done();
+                });
+            }
+        });
+    },
+    
     registerUser: function(email, name, password, callback) {
         
     },

@@ -54,12 +54,13 @@ function(username, password, done) {
 }
 ));*/
 
+/* URLs */
 var index = require('./routes/index');
+app.use('/', index);
 
 /* APIs */
-
-
-app.use('/', index);
+var user = require('./routes/user')(dbService);
+app.use('/user', user);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

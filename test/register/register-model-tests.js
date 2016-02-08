@@ -24,6 +24,15 @@ describe('The register model', function() {
         
     });
     
+    describe('getEmail()', function() {
+        
+        it('should return the \'email\' property', function() {
+            model.set('email', 'foo@bar.com');
+            expect(model.getEmail()).to.equal('foo@bar.com');
+        });
+        
+    });
+    
     describe('setName()', function() {
         
         it('should set the \'name\' property on the model', function() {
