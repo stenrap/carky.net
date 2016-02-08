@@ -127,6 +127,27 @@ describe.skip('The db service', function() {
         });
         
     });
+    
+    describe('registerUser()', function() {
+        
+        it('should create a new user', function(itDone) {
+            var test = this;
+            this.dbService.registerUser('foo@bar.com', 'Rob', 'password', '31111111-2222-3333-4444-555555555555', function(err) {
+                if (err) {
+                    console.error(err);
+                }
+                test.getUser(function(result) {
+                    expect(result.code).to.equal('31111111-2222-3333-4444-555555555555');
+                    itDone();
+                });
+            });
+        });
+
+        after(function(afterDone) {
+            this.deleteUser(afterDone);
+        });
+        
+    });
 
     after(function() {
         this.dbService.end();

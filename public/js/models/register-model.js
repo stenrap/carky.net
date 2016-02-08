@@ -14,8 +14,16 @@ var RegisterModel = Backbone.Model.extend({
         this.set('name', name);
     },
 
+    getName: function() {
+        return this.get('name');
+    },
+
     setPassword1: function(password1) {
         this.set('password1', password1);
+    },
+
+    getPassword1: function() {
+        return this.get('password1');
     },
 
     setPassword2: function(password2) {

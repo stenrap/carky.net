@@ -1,36 +1,31 @@
 var ReactDOM = require('react-dom'),
-    model    = require('login-model'),
-    view     = require('login-view'),
+    model    = require('register-model'),
+    view     = require('register-view'),
     router   = null;
 
-function LoginController() {}
+function RegisterController() {}
 
-LoginController.prototype = {
-
-    doLogin: function(carkyRouter) {
+RegisterController.prototype = {
+    
+    doRegister: function(carkyRouter) {
         router = carkyRouter;
         model.clear();
         controller.renderView();
     },
-
+    
     renderView: function() {
         ReactDOM.render(
             React.createElement(
                 view,
                 {
-                    name: 'Rob',
-                    registerClicked: controller.registerClicked
+                    name: 'Rob'
                 }
             ),
             document.getElementById('content')
         );
-    },
-    
-    registerClicked: function() {
-        router.routeToRegister();
     }
-
+    
 };
 
-var controller = new LoginController();
+var controller = new RegisterController();
 module.exports = controller;

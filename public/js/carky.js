@@ -1,4 +1,6 @@
-var Backbone = require('backbone');
+var Backbone           = require('backbone'),
+    loginController    = null,
+    registerController = null;
 
 var CarkyRouter = Backbone.Router.extend({
     
@@ -8,11 +10,31 @@ var CarkyRouter = Backbone.Router.extend({
     },
     
     login: function() {
-        
+        var router = this;
+        if (loginController === null) {
+            require.ensure(['login-controller'], function(require) {
+                loginController = require('login-controller');
+                loginController.doLogin(router);
+            });
+        } else {
+            loginController.doLogin(router);
+        }
     },
     
     register: function() {
-        // TODO and WYLO 4 .... Render this bad boy (should have a lot in common with the login view)
+        var router = this;
+        if (registerController === null) {
+            require.ensure(['register-controller'], function(require) {
+                registerController = require('register-controller');
+                registerController.doRegister(router);
+            });
+        } else {
+            registerController.doRegister(router);
+        }
+    },
+
+    routeToRegister: function() {
+        this.navigate('register', {trigger: true});
     }
     
 });

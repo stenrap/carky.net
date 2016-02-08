@@ -1,4 +1,5 @@
-var pg = require('pg').native;
+var pg     = require('pg').native,
+    bcrypt = require('bcrypt');
 
 module.exports = {
 
@@ -67,8 +68,35 @@ module.exports = {
         });
     },
     
-    registerUser: function(email, name, password, callback) {
-        
+    registerUser: function(email, name, password, code, callback) {
+        pg.connect(this.connectionString, function(err, client, done) {
+            if (err) {
+                callback('Error getting client connection: ' + err);
+            } else {
+                bcrypt.genSalt(10, function (err, salt) {
+                    bcrypt.hash(password, salt, function (hashErr, hash) {
+                        if (hashErr) {
+                            callback('Error setting password: ' + hashErr);
+                            done();
+                        } else {
+                            client.query({
+                                name: 'register_user_query',
+                                text: 'SELECT register_user($1, $2, $3, $4)',
+                                values: [email, name, hash, code]
+                            },
+                            function (err) {
+                                if (err) {
+                                    callback('Error performing register_user() query: ' + err);
+                                } else {
+                                    callback(null);
+                                }
+                                done();
+                            });
+                        }
+                    });
+                });
+            }
+        });
     },
     
     end: function() {

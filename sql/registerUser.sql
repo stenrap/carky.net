@@ -1,7 +1,5 @@
 -- psql -d carky -a -f registerUser.sql
 
--- TODO and WYLO 2 .... Use the above ^ to import this, then TDD it into existence.
-
 CREATE OR REPLACE FUNCTION register_user(emailArg       character varying(256),
                                          displayNameArg character varying(256),
                                          passwordArg    character varying(512),

@@ -16,7 +16,6 @@ router.post('/register', function(req, res, next) {
         return res.send({error: result.error});
     }
     
-    // TODO and WYLO 1 .... See TODO and WYLO 1 for the /register flow in the project.text file.
     dbService.getUserByEmail(model.getEmail(), function(err, result) {
         if (err) {
             return res.send({error: err});
@@ -24,17 +23,26 @@ router.post('/register', function(req, res, next) {
         var code = uuid.v4();
         if (result.id) {
             if (result.code) {
-                // TODO and WYLO .... Update the user code via your new stored function.
-                
-                // TODO .... Uncomment this when you've decided how carky.net email will work.
-                //emailService.sendCode(model.getEmail(), code);
+                dbService.updateUserCode(code, model.getEmail(), function(updateErr) {
+                    if (updateErr) {
+                        return res.send({error: updateErr});
+                    }
+                    // TODO .... Uncomment this when you've decided how carky.net email will work.
+                    //emailService.sendCode(model.getEmail(), code);
+                    return res.send({updatedCode: true});
+                });
             } else {
-                
+                return res.send({alreadyVerified: true});
             }
         } else {
-            
-            // TODO .... Uncomment this when you've decided how carky.net email will work.
-            //emailService.sendCode(model.getEmail(), code);
+            dbService.registerUser(model.getEmail(), model.getName(), model.getPassword1(), code, function(registerErr) {
+                if (registerErr) {
+                    return res.send({error: registerErr});
+                }
+                // TODO .... Uncomment this when you've decided how carky.net email will work.
+                //emailService.sendCode(model.getEmail(), code);
+                return res.send({created: true});
+            });
         }
     });
     

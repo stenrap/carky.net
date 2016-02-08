@@ -41,6 +41,15 @@ describe('The register model', function() {
         });
         
     });
+
+    describe('getName()', function() {
+
+        it('should return the \'name\' property', function() {
+            model.set('name', 'Rob');
+            expect(model.getName()).to.equal('Rob');
+        });
+
+    });
     
     describe('setPassword1()', function() {
         
@@ -49,6 +58,15 @@ describe('The register model', function() {
             expect(model.get('password1')).to.equal('password');
         });
         
+    });
+
+    describe('getPassword1()', function() {
+
+        it('should return the \'password1\' property', function() {
+            model.set('password1', 'password');
+            expect(model.getPassword1()).to.equal('password');
+        });
+
     });
 
     describe('setPassword2()', function() {

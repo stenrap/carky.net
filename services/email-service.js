@@ -1,10 +1,10 @@
 var nodemailer    = require('nodemailer'),
     smtpTransport = require('nodemailer-smtp-transport'),
-    appConfig     = require('config');
+    appConfig     = require('config').get('config.email');
     transport     = null;
 
 function EmailService() {
-
+    
     transport = nodemailer.createTransport(smtpTransport({
         host: 'mail.carky.net',
         // TODO .... Get an SSL certificate so you can send secure emails.
@@ -15,8 +15,8 @@ function EmailService() {
         },
         // TODO .... Get an SSL certificate so you can send secure emails.
         auth: {
-            user: appConfig.email.noreply.user,
-            pass: appConfig.email.noreply.password
+            user: appConfig.get('noreply.user'),
+            pass: appConfig.get('noreply.password')
         }
     }));
     
