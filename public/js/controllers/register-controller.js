@@ -10,7 +10,13 @@ RegisterController.prototype = {
     doRegister: function(carkyRouter) {
         router = carkyRouter;
         model.clear();
+        controller.setBackground();
         controller.renderView();
+    },
+    
+    setBackground: function() {
+        document.documentElement.style.background = 'url(assets/log-reg-back.jpg) no-repeat center center fixed';
+        document.documentElement.style.backgroundSize = 'cover';
     },
     
     renderView: function() {

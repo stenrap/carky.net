@@ -1,0 +1,32 @@
+@font-face {
+    font-family: Lindsay;
+    src: url(../assets/lindsayef-webfont.eot)   format('embedded-opentype'),
+         url(../assets/lindsayef-webfont.svg)   format('svg'),
+         url(../assets/lindsayef-webfont.woff)  format('woff'),
+         url(../assets/lindsayef-webfont.woff2) format('woff2');
+    font-weight: bold;
+}
+
+.largeLogoContainer {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.largeLogoImage {
+    background: url(../assets/title-card.png) no-repeat left center;
+    background-size: contain;
+    display: inline-block;
+    height: 68px;
+    position: relative;
+}
+
+.carkyText {
+    color: #f7d221;
+    font-family: Lindsay;
+    font-size: 84px;
+    left: 12px;
+    margin-top: 0;
+    position: relative;
+    text-shadow: -2px 2px 4px #000;
+    top: -14px;
+}

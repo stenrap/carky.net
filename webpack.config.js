@@ -14,7 +14,11 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractCSS.extract('style-loader', 'css-loader')
+                loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+            },
+            {
+                test: /\.(png|jpg|eot|svg|ttf|woff|woff2)/,
+                loader: 'url-loader'
             },
             {
                 test: require.resolve('react'),
@@ -34,15 +38,17 @@ module.exports = {
             name: 'common',
             filename: 'common.js'
         }),
-        new ExtractCSS('./public/build/css/[name].min.css')
+        new webpack.optimize.DedupePlugin()
     ],
     resolve: {
-        extensions: ['', '.js'],
+        extensions: ['', '.css', '.js'],
         root: [
             path.join(__dirname, 'node_modules'),
+            __dirname + '/public/css',
             __dirname + '/public/js',
             __dirname + '/public/js/models',
             __dirname + '/public/js/views',
+            __dirname + '/public/js/views/components',
             __dirname + '/public/js/controllers'
         ]
     },
