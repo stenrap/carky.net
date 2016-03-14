@@ -1,12 +1,3 @@
-@font-face {
-    font-family: Lindsay;
-    src: url(../assets/lindsayef-webfont.eot)   format('embedded-opentype'),
-         url(../assets/lindsayef-webfont.svg)   format('svg'),
-         url(../assets/lindsayef-webfont.woff)  format('woff'),
-         url(../assets/lindsayef-webfont.woff2) format('woff2');
-    font-weight: bold;
-}
-
 .largeLogoContainer {
     margin-top: 30px;
     text-align: center;

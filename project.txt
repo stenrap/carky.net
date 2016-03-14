@@ -165,7 +165,7 @@ NOTE: In order to be a single-page app yet support "real" URLs, when any of the 
     
         use the register model and db service to register a user
         
-        TODO and WYLO 1 .... See below.
+        TODO and WYLO 3 .... See below.
         
         if (the user exists) {
             if (the user has a non-NULL code) {

@@ -24,11 +24,40 @@ RegisterController.prototype = {
             React.createElement(
                 view,
                 {
-                    name: 'Rob'
+                    emailChanged:     controller.emailChanged,
+                    nameChanged:      controller.nameChanged,
+                    password1Changed: controller.password1Changed,
+                    password2Changed: controller.password2Changed,
+                    submitClicked:    controller.submitClicked
                 }
             ),
             document.getElementById('content')
         );
+    },
+    
+    emailChanged: function(email) {
+        model.setEmail(email);
+    },
+    
+    nameChanged: function(name) {
+        model.setName(name);
+    },
+    
+    password1Changed: function(password1) {
+        model.setPassword1(password1);
+    },
+
+    password2Changed: function(password2) {
+        model.setPassword2(password2);
+    },
+    
+    submitClicked: function() {
+        var result = model.validate();
+        if (result.error) {
+            // TODO and WYLO 1 .... Display a popup like in Socrative.
+        } else {
+            // TODO and WYLO 2 .... Tell the model to send (POST) the registration to the /user/register API.
+        }
     }
     
 };

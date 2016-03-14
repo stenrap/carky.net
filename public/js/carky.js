@@ -1,4 +1,5 @@
 var Backbone           = require('backbone'),
+    globalStyles       = require('global'),
     loginController    = null,
     registerController = null;
 
